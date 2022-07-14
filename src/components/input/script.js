@@ -2,6 +2,7 @@ const InputComponent = (attributi) => {
     return (
         <div className="input-componente">
             <input type={attributi.configurazioneInput.tipo}
+                autocomplete="autocomplete"
                 id={attributi.configurazioneInput.id}
                 className={attributi.configurazioneInput.classe}
                 defaultValue={attributi.configurazioneInput.valore}

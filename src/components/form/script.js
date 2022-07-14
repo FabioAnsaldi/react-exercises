@@ -12,7 +12,8 @@ const FormComponent = (attributi) => {
                         id: "inputEmail",
                         classe: "form-control",
                         marcatore: "Inserisci Email",
-                    etichetta: "Email" }} />
+                        etichetta: "Email"
+                    }} />
                 </div>
 
                 <div className="form-label-group">
