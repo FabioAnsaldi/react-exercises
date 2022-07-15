@@ -10,14 +10,18 @@ import Learn from '../learn';
 class App extends React.Component {
   constructor() {
     super()
-    this.state = {
+    const initialState = {
       page: (window && window.location.hash.replaceAll('#/', '')) || "home",
     }
+    this.state = initialState
+  }
+  changePage(value) {
+    this.setState({ page: value })
   }
 	render() {
     const config = {
       page: this.state.page,
-      changePageCallback: (value) => this.setState({ page: value })
+      changePageCallback: (value) => this.changePage(value)
     }
 		return (
       <div className="app-component cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
