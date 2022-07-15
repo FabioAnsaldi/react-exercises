@@ -1,16 +1,19 @@
 import React from 'react'
 
+import Nav from '../nav'
+
 function Footer(attr) {
-    return (
-      <div className="footer-component">
-        <footer className="mastfoot mt-auto">
-          <div className="inner">
-            <p>Corso Front End, by <strong>Tutti i corsisti!</strong></p>
-          </div>
-        </footer>
-      </div>
-    );
-  }
+	const menuLinks = { links: attr && attr.menu.filter((obj) => obj.typo === 'extra') }
+	return (
+		<div className="footer-component">
+			<footer className="mastfoot mt-auto">
+				<div className="inner">
+					<span>Corso Front End, by</span> <strong>Tutti i corsisti!</strong>
+					<Nav state={attr.state} menu={menuLinks} />
+				</div>
+			</footer>
+		</div>
+	)
+}
   
-  export default Footer;
-  
+export default Footer

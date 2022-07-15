@@ -86,3 +86,7 @@ a, a:focus, a:hover {
 .mastfoot {
   color: rgba(255, 255, 255, .5);
 }
+
+footer .nav-component {
+  float: right;
+}
