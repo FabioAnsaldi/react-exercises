@@ -45,7 +45,7 @@ class App extends React.Component {
 	submit(username, password) {
 		const data = { email: username, pass: password }
 		
-		fetch('https://run.mocky.io/v3/5550215f-2b95-4cf7-ab6f-fe126d7df445', {
+		fetch('https://run.mocky.io/v3/422aaa4e-22c0-4e3f-901d-4ccf5eb22ff2', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -57,7 +57,8 @@ class App extends React.Component {
 			})
 			.then(data => {
 				if (data.success === true) {
-					this.setState({ page: '', menu: this.state.menu, authorized: true })
+					const newState = Object.assign({}, this.state, { page: '', authorized: true })
+					this.setState(newState)
 					window.location.hash = '#/'
 				}
 			})
@@ -67,11 +68,10 @@ class App extends React.Component {
 	}
 
 	render() {
-		const config = {
-			page: this.state.page,
-			changePageCallback: (value) => this.changePage(value),
-			submitCallback: (user, pass) => this.submit(user, pass)
-		}
+		const config = Object.assign(
+			{},
+			this.state,
+			{ changePageCallback: (value) => this.changePage(value), submitCallback: (user, pass) => this.submit(user, pass) })
 		return (
 			<div className="app-component cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 				<HashRouter basename="/">
@@ -79,7 +79,8 @@ class App extends React.Component {
 					<Switch>
 						<Route path="/about" exact component={() => <About state={config} />} />
 						<Route path="/learn" exact component={() => <Learn state={config} />} />
-						<Route path="/login" exact component={() => <Login state={config} />} />
+						{!this.state.authorized &&
+							<Route path="/login" exact component={() => <Login state={config} />} />}
 						<Route path="/" exact component={() => <Home state={config} menu={this.state.menu} />} />
 					</Switch>
 					<Footer state={config} menu={this.state.menu} />
