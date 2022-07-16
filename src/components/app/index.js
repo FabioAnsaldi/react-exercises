@@ -25,18 +25,21 @@ class App extends React.Component {
 	}
 
 	getMenu() {
-		fetch('https://run.mocky.io/v3/1e43d6eb-d37f-4db7-9eca-6cbae242e8b8')
+		fetch('https://run.mocky.io/v3/85bcb491-42eb-4505-9779-898c0655a8d1')
 			.then(res => res.json())
 			.then((result) => {
-				this.setState({ page: this.state.page, menu: result.links, authorized: this.state.authorized })
+				const newState = Object.assign({}, this.state, { menu: result })
+				this.setState(newState)
 			},
 			(error) => {
-				this.setState({ page: this.state.page, menu: this.state.menu, error })
+				const newState = Object.assign({}, this.state, error)
+				this.setState(newState)
 			})
 	}
   
 	changePage(value) {
-		this.setState({ page: value, menu: this.state.menu, authorized: this.state.authorized })
+		const newState = Object.assign({}, this.state, { page: value })
+		this.setState(newState)
 	}
 
 	submit(username, password) {

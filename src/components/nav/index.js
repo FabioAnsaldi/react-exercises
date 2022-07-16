@@ -5,7 +5,7 @@ function Nav(attr) {
 	return (
 		<div className="nav-component">
 			<nav className="nav nav-masthead">
-				{attr.menu.links.map((obj) => (
+				{attr.menu.map((obj) => (
 					<React.Fragment key={obj.label}>
 						<a href={`#/${obj.path}`}
 							onClick={() => attr.state.changePageCallback(obj.path)}

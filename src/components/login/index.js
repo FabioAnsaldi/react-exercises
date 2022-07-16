@@ -19,7 +19,7 @@ function Login(attr) {
 					</div>
 					<div className="form-group">
 						<label htmlFor="exampleInputPassword1">Password</label>
-						<input ref={passwordRef} type="password" className="form-control" id="exampleInputPassword1"/>
+						<input ref={passwordRef} type="password" className="form-control" id="exampleInputPassword1" required />
 					</div>
 					<div className="form-group form-check">
 						<input type="checkbox" className="form-check-input" id="exampleCheck1" />
